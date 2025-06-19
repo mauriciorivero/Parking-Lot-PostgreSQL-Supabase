@@ -24,12 +24,12 @@
                     <div class="endpoint">
                         <h3 class="font-semibold text-lg">GET /api/users</h3>
                         <p class="text-gray-600 mb-2">Obtiene todos los usuarios</p>
-                        <button onclick="fetchData('/api/users')" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mb-2">
+                        <a href="/api/users" target="_blank" class="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mb-2">
                             Probar GET Users
-                        </button>
+                        </a>
                         <div class="bg-gray-100 p-3 rounded">
                             <p class="text-sm font-mono">Respuesta:</p>
-                            <pre><code class="language-json" id="users-response">[
+                            <pre><code class="language-json">[
   {
     "id_usuario": 1,
     "tipo_documento": "CC",
@@ -62,6 +62,16 @@
 }</code></pre>
                         </div>
                     </div>
+
+                    <div class="endpoint">
+                        <h3 class="font-semibold text-lg">PUT /api/users/:id</h3>
+                        <p class="text-gray-600 mb-2">Actualiza un usuario existente</p>
+                    </div>
+
+                    <div class="endpoint">
+                        <h3 class="font-semibold text-lg">DELETE /api/users/:id</h3>
+                        <p class="text-gray-600 mb-2">Elimina un usuario</p>
+                    </div>
                 </div>
             </div>
 
@@ -72,12 +82,12 @@
                     <div class="endpoint">
                         <h3 class="font-semibold text-lg">GET /api/vehicles</h3>
                         <p class="text-gray-600 mb-2">Obtiene todos los vehículos</p>
-                        <button onclick="fetchData('/api/vehicles')" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mb-2">
+                        <a href="/api/vehicles" target="_blank" class="inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mb-2">
                             Probar GET Vehicles
-                        </button>
+                        </a>
                         <div class="bg-gray-100 p-3 rounded">
                             <p class="text-sm font-mono">Respuesta:</p>
-                            <pre><code class="language-json" id="vehicles-response">[
+                            <pre><code class="language-json">[
   {
     "id": 1,
     "placa": "ABC123",
@@ -98,6 +108,32 @@
                             <p class="text-sm font-mono">Ejemplo: GET /api/vehicles/plate/ABC123</p>
                         </div>
                     </div>
+
+                    <div class="endpoint">
+                        <h3 class="font-semibold text-lg">POST /api/vehicles</h3>
+                        <p class="text-gray-600 mb-2">Registra un nuevo vehículo</p>
+                        <div class="bg-gray-100 p-3 rounded">
+                            <p class="text-sm font-mono">Request Body:</p>
+                            <pre><code class="language-json">{
+  "placa": "XYZ789",
+  "color": "azul",
+  "modelo": "2021",
+  "marca": "Honda",
+  "tipo": "Carro",
+  "USUARIO_id_usuario": 1
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="endpoint">
+                        <h3 class="font-semibold text-lg">PUT /api/vehicles/:id</h3>
+                        <p class="text-gray-600 mb-2">Actualiza un vehículo</p>
+                    </div>
+
+                    <div class="endpoint">
+                        <h3 class="font-semibold text-lg">DELETE /api/vehicles/:id</h3>
+                        <p class="text-gray-600 mb-2">Elimina un vehículo</p>
+                    </div>
                 </div>
             </div>
 
@@ -108,12 +144,12 @@
                     <div class="endpoint">
                         <h3 class="font-semibold text-lg">GET /api/access</h3>
                         <p class="text-gray-600 mb-2">Obtiene todos los registros de acceso</p>
-                        <button onclick="fetchData('/api/access')" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 mb-2">
+                        <a href="/api/access" target="_blank" class="inline-block bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 mb-2">
                             Probar GET Access
-                        </button>
+                        </a>
                         <div class="bg-gray-100 p-3 rounded">
                             <p class="text-sm font-mono">Respuesta:</p>
-                            <pre><code class="language-json" id="access-response">[
+                            <pre><code class="language-json">[
   {
     "id": 1,
     "movimiento": "Entrada",
@@ -122,6 +158,19 @@
     "VEHICULO_id": 1
   }
 ]</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="endpoint">
+                        <h3 class="font-semibold text-lg">POST /api/access</h3>
+                        <p class="text-gray-600 mb-2">Registra entrada/salida de vehículo</p>
+                        <div class="bg-gray-100 p-3 rounded">
+                            <p class="text-sm font-mono">Request Body:</p>
+                            <pre><code class="language-json">{
+  "movimiento": "Entrada",
+  "puerta": "Puerta 1",
+  "VEHICULO_id": 1
+}</code></pre>
                         </div>
                     </div>
                 </div>
@@ -134,18 +183,29 @@
                     <div class="endpoint">
                         <h3 class="font-semibold text-lg">GET /api/cells</h3>
                         <p class="text-gray-600 mb-2">Obtiene todas las celdas</p>
-                        <button onclick="fetchData('/api/cells')" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 mb-2">
+                        <a href="/api/cells" target="_blank" class="inline-block bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 mb-2">
                             Probar GET Cells
-                        </button>
+                        </a>
                         <div class="bg-gray-100 p-3 rounded">
                             <p class="text-sm font-mono">Respuesta:</p>
-                            <pre><code class="language-json" id="cells-response">[
+                            <pre><code class="language-json">[
   {
     "id": 1,
     "tipo": "Carro",
     "estado": "Libre"
   }
 ]</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="endpoint">
+                        <h3 class="font-semibold text-lg">PUT /api/cells/:id</h3>
+                        <p class="text-gray-600 mb-2">Actualiza el estado de una celda</p>
+                        <div class="bg-gray-100 p-3 rounded">
+                            <p class="text-sm font-mono">Request Body:</p>
+                            <pre><code class="language-json">{
+  "estado": "Ocupado"
+}</code></pre>
                         </div>
                     </div>
                 </div>
@@ -158,18 +218,30 @@
                     <div class="endpoint">
                         <h3 class="font-semibold text-lg">GET /api/incidents</h3>
                         <p class="text-gray-600 mb-2">Obtiene todas las incidencias</p>
-                        <button onclick="fetchData('/api/incidents')" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 mb-2">
+                        <a href="/api/incidents" target="_blank" class="inline-block bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 mb-2">
                             Probar GET Incidents
-                        </button>
+                        </a>
                         <div class="bg-gray-100 p-3 rounded">
                             <p class="text-sm font-mono">Respuesta:</p>
-                            <pre><code class="language-json" id="incidents-response">[
+                            <pre><code class="language-json">[
   {
     "id": 1,
     "nombre": "Robo de vehiculo",
     "descripcion": "Detalles del incidente"
   }
 ]</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="endpoint">
+                        <h3 class="font-semibold text-lg">POST /api/incidents</h3>
+                        <p class="text-gray-600 mb-2">Registra una nueva incidencia</p>
+                        <div class="bg-gray-100 p-3 rounded">
+                            <p class="text-sm font-mono">Request Body:</p>
+                            <pre><code class="language-json">{
+  "nombre": "Robo de vehiculo",
+  "descripcion": "Detalles del incidente"
+}</code></pre>
                         </div>
                     </div>
                 </div>
@@ -182,12 +254,12 @@
                     <div class="endpoint">
                         <h3 class="font-semibold text-lg">GET /api/pico-placa</h3>
                         <p class="text-gray-600 mb-2">Consulta restricciones de pico y placa</p>
-                        <button onclick="fetchData('/api/pico-placa')" class="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 mb-2">
+                        <a href="/api/pico-placa" target="_blank" class="inline-block bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 mb-2">
                             Probar GET Pico y Placa
-                        </button>
+                        </a>
                         <div class="bg-gray-100 p-3 rounded">
                             <p class="text-sm font-mono">Respuesta:</p>
-                            <pre><code class="language-json" id="pico-placa-response">[
+                            <pre><code class="language-json">[
   {
     "id": 1,
     "tipo_vehiculo": "Carro",
@@ -196,6 +268,11 @@
   }
 ]</code></pre>
                         </div>
+                    </div>
+
+                    <div class="endpoint">
+                        <h3 class="font-semibold text-lg">GET /api/pico-placa/:dia</h3>
+                        <p class="text-gray-600 mb-2">Consulta restricciones por día</p>
                     </div>
                 </div>
             </div>
@@ -207,27 +284,6 @@
     </div>
 
     <script>
-        // Función para hacer las peticiones GET
-        async function fetchData(endpoint) {
-            try {
-                const response = await fetch(endpoint);
-                const data = await response.json();
-                
-                // Obtener el ID del elemento donde mostrar la respuesta
-                const elementId = endpoint.split('/')[2] + '-response';
-                const element = document.getElementById(elementId);
-                
-                // Actualizar el contenido con la respuesta formateada
-                element.textContent = JSON.stringify(data, null, 2);
-                
-                // Volver a aplicar el resaltado de sintaxis
-                Prism.highlightElement(element);
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Error al obtener los datos. Verifica la consola para más detalles.');
-            }
-        }
-
         // Highlight code blocks on load
         document.addEventListener('DOMContentLoaded', (event) => {
             Prism.highlightAll();
