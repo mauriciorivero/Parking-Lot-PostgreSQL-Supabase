@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Lot API Documentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-json.min.js"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">Parking Lot API Documentation</h1>
+            <p class="text-xl text-gray-600">Sistema de Gestión de Parqueadero</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Usuarios -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-4 text-blue-600">Usuarios</h2>
+                <div class="space-y-4">
+                    <div class="endpoint">
+                        <h3 class="font-semibold text-lg">GET /api/users</h3>
+                        <p class="text-gray-600 mb-2">Obtiene todos los usuarios</p>
+                        <div class="bg-gray-100 p-3 rounded">
+                            <p class="text-sm font-mono">Respuesta:</p>
+                            <pre><code class="language-json">[
+  {
+    "id_usuario": 1,
+    "tipo_documento": "CC",
+    "numero_documento": "123456789",
+    "primer_nombre": "Juan",
+    "primer_apellido": "Pérez",
+    "direccion_correo": "juan@example.com",
+    "numero_celular": "3001234567",
+    "estado": "activo",
+    "PERFIL_USUARIO_id": 1
+  }
+]</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="endpoint">
+                        <h3 class="font-semibold text-lg">POST /api/users</h3>
+                        <p class="text-gray-600 mb-2">Crea un nuevo usuario</p>
+                        <div class="bg-gray-100 p-3 rounded">
+                            <p class="text-sm font-mono">Request Body:</p>
+                            <pre><code class="language-json">{
+  "tipo_documento": "CC",
+  "numero_documento": "123456789",
+  "primer_nombre": "Juan",
+  "primer_apellido": "Pérez",
+  "direccion_correo": "juan@example.com",
+  "numero_celular": "3001234567",
+  "estado": "activo",
+  "PERFIL_USUARIO_id": 1
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vehículos -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-4 text-green-600">Vehículos</h2>
+                <div class="space-y-4">
+                    <div class="endpoint">
+                        <h3 class="font-semibold text-lg">GET /api/vehicles</h3>
+                        <p class="text-gray-600 mb-2">Obtiene todos los vehículos</p>
+                        <div class="bg-gray-100 p-3 rounded">
+                            <p class="text-sm font-mono">Respuesta:</p>
+                            <pre><code class="language-json">[
+  {
+    "id": 1,
+    "placa": "ABC123",
+    "color": "rojo",
+    "modelo": "2020",
+    "marca": "Toyota",
+    "tipo": "Carro",
+    "USUARIO_id_usuario": 1
+  }
+]</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="endpoint">
+                        <h3 class="font-semibold text-lg">GET /api/vehicles/plate/:placa</h3>
+                        <p class="text-gray-600 mb-2">Busca un vehículo por placa</p>
+                        <div class="bg-gray-100 p-3 rounded">
+                            <p class="text-sm font-mono">Ejemplo: GET /api/vehicles/plate/ABC123</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accesos -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-4 text-purple-600">Accesos</h2>
+                <div class="space-y-4">
+                    <div class="endpoint">
+                        <h3 class="font-semibold text-lg">POST /api/access</h3>
+                        <p class="text-gray-600 mb-2">Registra entrada/salida de vehículo</p>
+                        <div class="bg-gray-100 p-3 rounded">
+                            <p class="text-sm font-mono">Request Body:</p>
+                            <pre><code class="language-json">{
+  "movimiento": "Entrada",
+  "puerta": "Puerta 1",
+  "VEHICULO_id": 1
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Celdas -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-4 text-yellow-600">Celdas</h2>
+                <div class="space-y-4">
+                    <div class="endpoint">
+                        <h3 class="font-semibold text-lg">GET /api/cells</h3>
+                        <p class="text-gray-600 mb-2">Obtiene todas las celdas</p>
+                        <div class="bg-gray-100 p-3 rounded">
+                            <p class="text-sm font-mono">Respuesta:</p>
+                            <pre><code class="language-json">[
+  {
+    "id": 1,
+    "tipo": "Carro",
+    "estado": "Libre"
+  }
+]</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Incidencias -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-4 text-red-600">Incidencias</h2>
+                <div class="space-y-4">
+                    <div class="endpoint">
+                        <h3 class="font-semibold text-lg">POST /api/incidents</h3>
+                        <p class="text-gray-600 mb-2">Registra una nueva incidencia</p>
+                        <div class="bg-gray-100 p-3 rounded">
+                            <p class="text-sm font-mono">Request Body:</p>
+                            <pre><code class="language-json">{
+  "nombre": "Robo de vehiculo",
+  "descripcion": "Detalles del incidente"
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pico y Placa -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-4 text-indigo-600">Pico y Placa</h2>
+                <div class="space-y-4">
+                    <div class="endpoint">
+                        <h3 class="font-semibold text-lg">GET /api/pico-placa</h3>
+                        <p class="text-gray-600 mb-2">Consulta restricciones de pico y placa</p>
+                        <div class="bg-gray-100 p-3 rounded">
+                            <p class="text-sm font-mono">Respuesta:</p>
+                            <pre><code class="language-json">[
+  {
+    "id": 1,
+    "tipo_vehiculo": "Carro",
+    "numero": "1",
+    "dia": "Lunes"
+  }
+]</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="mt-12 text-center text-gray-600">
+            <p>Para más información, consulta la documentación completa o contacta al equipo de desarrollo.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Highlight code blocks on load
+        document.addEventListener('DOMContentLoaded', (event) => {
+            Prism.highlightAll();
+        });
+    </script>
+</body>
+</html> 
